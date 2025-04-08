@@ -19,7 +19,7 @@ public class ContratosAtivos {
     @Id
     private String contrato_Id;
 
-    private String empresa_Id;
+    private String usuario_Id;
     private String imovel_Id;
     private float quantiaKw;
     private LocalDate dataInicio = LocalDate.now();

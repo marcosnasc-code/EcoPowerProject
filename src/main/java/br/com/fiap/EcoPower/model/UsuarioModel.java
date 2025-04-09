@@ -29,11 +29,10 @@ public class UsuarioModel implements UserDetails {
     private String nome;
     private String email;
     private String senha;
-    private String Telefone;
     private Endereco endereco;
 
-    @Enumerated(EnumType.STRING)
-    private BrazilRegions regiao; //SUDESTE, NORDESTE, SUL, NORTE, CENTRO_OESTE
+//    @Enumerated(EnumType.STRING)
+//    private BrazilRegions regiao; //SUDESTE, NORDESTE, SUL, NORTE, CENTRO_OESTE
 //    @Enumerated(EnumType.STRING)
 //    private StatusUsers status; //ATIVO, INATIVO
     @Enumerated(EnumType.STRING)

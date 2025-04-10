@@ -6,9 +6,11 @@ import br.com.fiap.EcoPower.model.UsuarioModel;
 import br.com.fiap.EcoPower.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+@Service
 public class ContratacaoService {
 
     @Autowired

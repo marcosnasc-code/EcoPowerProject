@@ -2,6 +2,7 @@ package br.com.fiap.EcoPower.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 public record ServicoCadastroDTO(
         String idServico,
@@ -12,6 +13,7 @@ public record ServicoCadastroDTO(
 
         @NotBlank(message = "O preço base do Kw/h precisa ser inserido!")
         @NotNull
+        @Positive(message = "O valor deve ser positivo")
         double precoBaseKwh
 ) {
 }

@@ -21,10 +21,10 @@ public class ContratosAtivos {
 
     private String usuario_Id;
     private String imovel_Id;
-    private float quantiaKw;
+    private double quantiaKw;
     private LocalDate dataInicio = LocalDate.now();
-    private float tarifaAplicada;
-    private float valorTotalParaPagamento;
+    private double tarifaAplicada;
+    private double valorTotalParaPagamento;
 
     @Enumerated(EnumType.STRING)
     private StatusPagamento statusPagamento;

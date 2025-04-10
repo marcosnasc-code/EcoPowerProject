@@ -122,5 +122,4 @@ public class UsuarioModel implements UserDetails {
         private double precoBaseKwh;
     }
 
-
 }

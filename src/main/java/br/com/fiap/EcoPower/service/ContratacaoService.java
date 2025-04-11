@@ -45,7 +45,7 @@ public class ContratacaoService {
 
         //Cria novo contrato
         ContratosAtivos novoContrato = new ContratosAtivos();
-        novoContrato.setUsuario_Id(clienteEmail);
+        novoContrato.setUsuario_Id(clienteEmail.trim());
         novoContrato.setImovel_Id(imovelId);
         novoContrato.setQuantiaKw(quantiaKw);
         novoContrato.setTarifaAplicada(servico.getPrecoBaseKwh());

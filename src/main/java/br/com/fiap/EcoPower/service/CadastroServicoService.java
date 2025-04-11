@@ -19,7 +19,7 @@ public class CadastroServicoService {
     private UsuarioRepository usuarioRepository;
 
     @Transactional
-    public UsuarioModel.Servico cadastrarServico(String empresaEmail, String nome, @NotBlank(message = "Nome do serviço precisa ser inserido!") @NotNull String nomed, double precoBaseKw){
+    public UsuarioModel.Servico cadastrarServico(String empresaEmail, String nome, double precoBaseKw){
 
         //Verificando se a empresa é válida
         UsuarioModel empresa = usuarioRepository.findByEmail(empresaEmail)

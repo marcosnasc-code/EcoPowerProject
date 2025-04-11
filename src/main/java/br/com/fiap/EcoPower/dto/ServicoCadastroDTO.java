@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 public record ServicoCadastroDTO(
-        String idServico,
+//        String idServico,
 
         @NotBlank(message = "Nome do serviço precisa ser inserido!") //"ENERGIA_SOLAR", "ENERGIA_EOLICA"
         @NotNull

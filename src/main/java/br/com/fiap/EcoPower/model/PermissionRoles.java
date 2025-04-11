@@ -3,7 +3,7 @@ package br.com.fiap.EcoPower.model;
 public enum PermissionRoles {
 
     CLIENTE("cliente"),
-    DISTRIBUIDOR("distribuidor"),
+    EMPRESA("empresa"),
     ADMIN("admin");
 
     private String role;

@@ -4,16 +4,15 @@ import br.com.fiap.EcoPower.dto.UsuarioClienteCadastroDTO;
 import br.com.fiap.EcoPower.dto.UsuarioClienteExibicaoDTO;
 import br.com.fiap.EcoPower.dto.UsuarioEmpresaCadastroDTO;
 import br.com.fiap.EcoPower.dto.UsuarioEmpresaExibicaoDTO;
+import br.com.fiap.EcoPower.model.PermissionRoles;
 import br.com.fiap.EcoPower.model.UsuarioModel;
 import br.com.fiap.EcoPower.repository.UsuarioRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
@@ -36,6 +35,7 @@ public class UsuarioService {
         return new UsuarioClienteExibicaoDTO(usuarioRepository.save(usuarioModel));
     }
 
+    //    ========================
     public UsuarioEmpresaExibicaoDTO gravarEmpresa(UsuarioEmpresaCadastroDTO usuarioEmpresaCadastroDTO){
 
         String senhaCriptografada = new BCryptPasswordEncoder()
@@ -49,16 +49,45 @@ public class UsuarioService {
         return new UsuarioEmpresaExibicaoDTO(usuarioRepository.save(usuarioModel));
     }
 
-    public Page<UsuarioClienteExibicaoDTO> listarTodosClientes (Pageable pageable){
-        return usuarioRepository.findAll(pageable)
-                .map(UsuarioClienteExibicaoDTO::new);
+    //    ========================
+    public Page<UsuarioClienteExibicaoDTO> listarTodosClientes(Pageable pageable) {
+        Page<UsuarioModel> clientesPage = usuarioRepository.findByRole(PermissionRoles.CLIENTE, pageable);
+
+        return clientesPage.map(this::convertToDto);
+    }
+    private UsuarioClienteExibicaoDTO convertToDto(UsuarioModel usuario) {
+        return new UsuarioClienteExibicaoDTO(
+                usuario.getNome(),
+                usuario.getEmail(),
+                usuario.getDadosCliente().getCpf()
+        );
     }
 
-    public Page<UsuarioEmpresaExibicaoDTO> listarTodasEmpresas (Pageable pageable){
-        return usuarioRepository.findAll(pageable)
-                .map(UsuarioEmpresaExibicaoDTO::new);
+    //    ========================
+    public Page<UsuarioEmpresaExibicaoDTO> listarTodasEmpresas(Pageable pageable) {
+        Page<UsuarioModel> clientesPage = usuarioRepository.findByRole(PermissionRoles.CLIENTE, pageable);
+
+        return clientesPage.map(this::convertToDtoEmpresa);
+    }
+    private UsuarioEmpresaExibicaoDTO convertToDtoEmpresa(UsuarioModel usuario) {
+        return new UsuarioEmpresaExibicaoDTO(
+                usuario.getNome(),
+                usuario.getEmail(),
+                usuario.getDadosEmpresa().getCnpj()
+        );
     }
 
+    //    ========================
+    public UsuarioClienteExibicaoDTO listarUsuarioEmail(String email){
+        Optional<UsuarioModel> optionalUsuarioModel = usuarioRepository.findByEmail(email);
+        if(optionalUsuarioModel.isPresent()){
+            return new UsuarioClienteExibicaoDTO(optionalUsuarioModel.get());
+        }else{
+            throw new RuntimeException("Usuario não localizado!");
+        }
+    }
+
+    //    ========================
     public UsuarioModel atualizarUsuario(UsuarioModel usuarioModel){
         Optional<UsuarioModel> optionalUsuarioModel = usuarioRepository
                                                                 .findByEmail(usuarioModel
@@ -70,6 +99,7 @@ public class UsuarioService {
         }
     }
 
+    //    ========================
     public void excluir(String email){
         Optional<UsuarioModel> usuarioModel = usuarioRepository.findByEmail(email);
         if(usuarioModel.isPresent()){

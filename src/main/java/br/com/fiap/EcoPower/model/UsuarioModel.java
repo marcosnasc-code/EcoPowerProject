@@ -53,17 +53,20 @@ public class UsuarioModel implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if (this.role == PermissionRoles.ADMIN){
-            return List.of(
+        return switch (this.role) {
+            case ADMIN -> List.of(
                     new SimpleGrantedAuthority("ROLE_ADMIN"),
                     new SimpleGrantedAuthority("ROLE_CLIENTE"),
                     new SimpleGrantedAuthority("ROLE_EMPRESA")
             );
-        }else {
-            return List.of(
+            case EMPRESA -> List.of(
+                    new SimpleGrantedAuthority("ROLE_EMPRESA")
+            );
+            case CLIENTE -> List.of(
                     new SimpleGrantedAuthority("ROLE_CLIENTE")
             );
-        }
+            default -> throw new IllegalStateException("Role inválida: " + this.role);
+        };
     }
 
     @Override
@@ -115,6 +118,7 @@ public class UsuarioModel implements UserDetails {
         private Endereco endereco; // Endereço do imóvel
     }
 
+    //Separar depois, criar própria classe.
     @Getter @Setter
     public static class Servico {
         private String idServico = UUID.randomUUID().toString();

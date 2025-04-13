@@ -1,8 +1,9 @@
 package br.com.fiap.EcoPower.model;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+//import jakarta.persistence.EnumType;
+//import jakarta.persistence.Enumerated;
+//import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
 
@@ -19,9 +20,9 @@ public class Pagamentos {
     private LocalDate dataPagamento = LocalDate.now();
 
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     private MetodosPagamento metodosPagamento;
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     private StatusPagamento statusPagamento;
 
 

@@ -45,6 +45,7 @@ public class AuthController {
 
         return ResponseEntity.ok(new TokenDTO(token));
         //se estiver tudo okay o metodo retorna o status de ok junto com o token.
+
     }
 
     @PostMapping("/registro/cliente")
@@ -52,9 +53,6 @@ public class AuthController {
     public UsuarioClienteExibicaoDTO registrar(@RequestBody @Valid UsuarioClienteCadastroDTO usuarioClienteCadastroDTOCadastroDto){
         UsuarioClienteExibicaoDTO usuarioSalvo = null;
         usuarioSalvo = usuarioService.gravarCliente(usuarioClienteCadastroDTOCadastroDto);
-        //SERVICE AINDA N FEITO//SERVICE AINDA N FEITO
-        //SERVICE AINDA N FEITO//SERVICE AINDA N FEITO
-        //SERVICE AINDA N FEITO//SERVICE AINDA N FEITO
         return usuarioSalvo;
     }
 
@@ -63,10 +61,9 @@ public class AuthController {
     public UsuarioEmpresaExibicaoDTO registrar(@RequestBody @Valid UsuarioEmpresaCadastroDTO usuarioEmpresaCadastroDTO){
         UsuarioEmpresaExibicaoDTO usuarioSalvo = null;
         usuarioSalvo = usuarioService.gravarEmpresa(usuarioEmpresaCadastroDTO);
-        //SERVICE AINDA N FEITO//SERVICE AINDA N FEITO
-        //SERVICE AINDA N FEITO//SERVICE AINDA N FEITO
-        //SERVICE AINDA N FEITO//SERVICE AINDA N FEITO
         return usuarioSalvo;
     }
+
+
 
 }

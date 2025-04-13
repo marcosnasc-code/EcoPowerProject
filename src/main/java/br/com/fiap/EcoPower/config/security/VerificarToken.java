@@ -31,7 +31,14 @@ public class VerificarToken extends OncePerRequestFilter {
             HttpServletResponse response, //dados da resposta devolvida ao user
             FilterChain filterChain) throws ServletException, IOException { //corrente de filtragem + lançamento de excessoes
 
-        String authorizationHeader = request.getHeader("Autorization");
+        // Rotas públicas que não exigem autenticação
+        String uri = request.getRequestURI();
+        if (uri.equals("/auth/login") || uri.equals("/auth/registro/cliente") || uri.equals("/auth/registro/empresa") || uri.equals("/api/ping")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        String authorizationHeader = request.getHeader("Authorization");
         //exemplo String do header -> Bearer ToKeN321421nncu21cm32iocn3oi2
         String token = "";
 

@@ -1,5 +1,6 @@
 package br.com.fiap.EcoPower.dto;
 
+import br.com.fiap.EcoPower.model.PermissionRoles;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -23,12 +24,10 @@ public record UsuarioClienteCadastroDTO(
         @Size(min = 6, max = 12, message = "A senha deve conter entre 6 e 12 caracteres!")
         String senha,
 
-        @NotBlank
-        String cpf,
+        @NotNull(message = "O endereço deve ser informado!")
+        EnderecoCadastroDTO endereco,
 
-        List<ImovelCadastroDTO> imoveis
-
-
-
+        @NotNull(message = "Os dados do cliente devem ser preenchidos!")
+        DadosClienteDTO dadosCliente
 ) {
 }

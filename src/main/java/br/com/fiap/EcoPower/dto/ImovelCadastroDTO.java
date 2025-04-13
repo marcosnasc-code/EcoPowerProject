@@ -10,7 +10,7 @@ public record ImovelCadastroDTO(
 
         @NotBlank(message = "O tipo de imóvel precisa ser informado!")
         @NotNull
-        TipoImoveis imoveis,
+        TipoImoveis tipoImoveis,
 
         @NotBlank(message = "O endereço precisa ser inserido para verificação de taxas!")
         EnderecoCadastroDTO endereco

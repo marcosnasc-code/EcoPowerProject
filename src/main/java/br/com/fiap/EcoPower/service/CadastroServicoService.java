@@ -3,9 +3,10 @@ package br.com.fiap.EcoPower.service;
 
 import br.com.fiap.EcoPower.model.UsuarioModel;
 import br.com.fiap.EcoPower.repository.UsuarioRepository;
-import jakarta.transaction.Transactional;
+//import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

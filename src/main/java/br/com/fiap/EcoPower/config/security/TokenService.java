@@ -25,7 +25,7 @@ public class TokenService {
             Algorithm algorithm = Algorithm.HMAC256(palavra_secreta);
             String token = JWT
                     .create()
-                    .withIssuer("Contatos") //Emissor do Token
+                    .withIssuer("EcoPower") //Emissor do Token
                     .withSubject(usuario.getEmail()) //login do usuario
                     .withExpiresAt(gerarDataDeExpiracao()) //tempo de expiração do token
                     .sign(algorithm); //construir algoritmo de acordo com o hash escolhido
@@ -38,10 +38,10 @@ public class TokenService {
 
     public String validarToken(String token){
         try{
-            Algorithm algorithm = Algorithm.HMAC256(token); //define o algoritmo hash de criptografia pra passar o token
+            Algorithm algorithm = Algorithm.HMAC256(palavra_secreta); //define o algoritmo hash de criptografia pra passar o token
             return JWT //começa a construção do verificador JWT
                         .require(algorithm) //define o algoritmo de validacao da assinatura do token
-                        .withIssuer("Contatos") // especifica o emissor do token
+                        .withIssuer("EcoPower") // especifica o emissor do token
                         .build() //finaliza a configuração do verificador e prepara pra validar o token
                         .verify(token) //verifica o token
                         .getSubject(); //retorna o subject - login do usuario

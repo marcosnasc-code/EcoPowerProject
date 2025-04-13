@@ -4,7 +4,8 @@ import br.com.fiap.EcoPower.model.ContratosAtivos;
 import br.com.fiap.EcoPower.model.StatusPagamento;
 import br.com.fiap.EcoPower.model.UsuarioModel;
 import br.com.fiap.EcoPower.repository.UsuarioRepository;
-import jakarta.transaction.Transactional;
+//import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +39,7 @@ public class ContratacaoService {
         //Verifica se o imovel pertence ao cliente
         UsuarioModel.Imovel imovel = cliente.getDadosCliente()
                                             .getImoveis()
-                                            .stream().filter(i -> i.getImoveis().equals(imovelId))
+                                            .stream().filter(i -> i.getIdImovel().equals(imovelId))
                                             .findFirst()
                                             .orElseThrow(() -> new RuntimeException("Imovel não encontrado no perfil do cliente"));
 
@@ -55,10 +56,10 @@ public class ContratacaoService {
 
 
         //Adicionando o contrato ao cliente
-        if (cliente.getContratosAtivos() == null){
-            cliente.setContratosAtivos(new ArrayList<>());
+        if (cliente.getDadosCliente().getContratosAtivos() == null){
+            cliente.getDadosCliente().setContratosAtivos(new ArrayList<>());
         }
-        cliente.getContratosAtivos().add(novoContrato);
+        cliente.getDadosCliente().getContratosAtivos().add(novoContrato);
 
         //Atualizando o cliente
         usuarioRepository.save(cliente);

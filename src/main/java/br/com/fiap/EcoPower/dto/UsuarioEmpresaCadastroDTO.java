@@ -23,11 +23,9 @@ public record UsuarioEmpresaCadastroDTO(
         @Size(min = 6, max = 12, message = "A senha deve conter entre 6 e 12 caracteres!")
         String senha,
 
-        @NotBlank
-        String cnpj,
+        EnderecoCadastroDTO endereco,
 
-
-        List<ServicoCadastroDTO> servicos
+        DadosEmpresaDTO dadosEmpresa
 
 ) {
 }

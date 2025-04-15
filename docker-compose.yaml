@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_APPLICATION_NAME: EcoPower
+      SPRING_DATA_MONGODB_URI: mongodb://admin:senha123@mongo:27017/admin
+      SPRING_DATA_MONGODB_DATABASE: ecopowerdb
+      SPRING_AUTOCONFIGURE_EXCLUDE: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      SPRING_AI_ENABLED: "false"
+      SERVER_ERROR_INCLUDE_MESSAGE: Always
+      SERVER_ERROR_INCLUDE_STACKTRACE: Always
+      JWT_SECRET: ecopower
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: senha123
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
+

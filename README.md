@@ -9,10 +9,8 @@ Projeto/Aplicação em JAVA SpringBoot para contratos de planos de energia, visa
 ## Tecnologias
 - Java 17
 - Spring Boot
-- MongoDB (Com Driver reativo)
-- Lombok
-- Maven
-- Docker (Ainda não disponível)
+- MongoDB
+- Docker
 - Tecnologias adicionais, caso usadas, serão atualizadas no documento.
 
 ## Como executar

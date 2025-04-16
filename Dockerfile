@@ -13,4 +13,4 @@ COPY ${JAR_FILE} app.jar
 ENV PROFILE=docker
 
 # Define o comando de execução
-ENTRYPOINT ["java","--spring.profiles.active=${PROFILE}","-jar","app.jar"]
+ENTRYPOINT ["java","-jar","app.jar","--spring.profiles.active=${PROFILE}"]

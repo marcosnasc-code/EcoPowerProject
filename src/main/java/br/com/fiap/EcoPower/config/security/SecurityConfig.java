@@ -41,7 +41,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET,  "/api/ping").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/usuarios/listar/{email}").hasAnyRole("CLIENTE", "EMPRESA", "ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/cliente/atualizar").hasAnyRole("CLIENTE", "ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/api/empresa/atualizar").hasAnyRole("EMPRESAS", "ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/empresa/atualizar").hasAnyRole("EMPRESA", "ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/deletar/{email}").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .addFilterBefore(

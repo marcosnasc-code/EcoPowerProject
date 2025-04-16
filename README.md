@@ -3,8 +3,6 @@ Projeto/Aplicação em JAVA SpringBoot para contratos de planos de energia, visa
 
 ## Funcionalidades
 - Cadastro e autenticação de usuários
-- Registro de consumo de energia
-- Cálculo de EcoPoints e ranking
 - Escolha e troca de fornecedor de energia em mercado livre
 - Integração com MongoDB
 

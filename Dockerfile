@@ -9,5 +9,8 @@ EXPOSE 8080
 ARG JAR_FILE=target/EcoPower-0.0.1-SNAPSHOT.jar
 COPY ${JAR_FILE} app.jar
 
+# Define o perfil properties a ser usado
+ENV PROFILE=docker
+
 # Define o comando de execução
-ENTRYPOINT ["java","-jar","app.jar","--spring.profiles.active=docker"]
+ENTRYPOINT ["java","--spring.profiles.active=${PROFILE}","-jar","app.jar"]

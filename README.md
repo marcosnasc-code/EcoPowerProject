@@ -14,20 +14,4 @@ Projeto/Aplicação em JAVA SpringBoot para contratos de planos de energia, visa
 - Tecnologias adicionais, caso usadas, serão atualizadas no documento.
 
 ## Como executar
-- ## Pré-Requisitos
-
-- Java 17+
-- Git
-- Docker
-
-## Build e Execução
-
-Na diretório do projeto
-
-```bash
-docker compose up --build
-```
-
-## Para testes Unitários
-
-./mvnw test
+- 

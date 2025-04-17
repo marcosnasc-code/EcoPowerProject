@@ -15,3 +15,4 @@ Projeto/Aplicação em JAVA SpringBoot para contratos de planos de energia, visa
 
 ## Como executar
 - Será adicionado posteriormente.
+- Edição Testett

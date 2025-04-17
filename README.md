@@ -1,5 +1,6 @@
 # EcoPowerProject
-Projeto/Aplicação em JAVA SpringBoot para contratos de planos de energia, visando aos usuários: economia, monitoramento de uso e acumulo de EcoPoints para outras vantagens (descontos a partir de EcoPoints). 
+Projeto/Aplicação em JAVA SpringBoot para contratos de planos de energia, visando aos usuários: economia, monitoramento de uso e acumulo de EcoPoints para outras vantagens (descontos a partir de EcoPoints).
+Projeto FIAP
 
 ## Funcionalidades
 - Cadastro e autenticação de usuários

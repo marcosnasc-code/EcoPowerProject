@@ -101,7 +101,9 @@ public class UsuarioService {
         return new UsuarioClienteExibicaoDTO(
                 usuario.getNome(),
                 usuario.getEmail(),
-                usuario.getDadosCliente().getCpf()
+                usuario.getDadosCliente().getCpf(),
+                usuario.getEndereco(),
+                usuario.getDadosCliente()
         );
     }
 

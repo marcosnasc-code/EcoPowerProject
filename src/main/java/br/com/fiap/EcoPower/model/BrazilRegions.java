@@ -1,21 +1,23 @@
 package br.com.fiap.EcoPower.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum BrazilRegions {
+    SUDESTE, SUL, CENTRO_OESTE, NORTE, NORDESTE;
 
-    SUDESTE("sudeste"),
-    CENTRO_OESTE("centro-oeste"),
-    SUL("sul"),
-    NORDESTE("nordeste"),
-    NORTE("norte");
-
-    private String regiao;
-
-    BrazilRegions(String regiao){
-        this.regiao = regiao;
+    @JsonCreator
+    public static BrazilRegions from(String value) {
+        for (BrazilRegions regiao : values()) {
+            if (regiao.name().equalsIgnoreCase(value)) {
+                return regiao;
+            }
+        }
+        throw new IllegalArgumentException("Região inválida: " + value);
     }
 
-    public String getRegiao(){
-        return regiao;
+    @JsonValue
+    public String getValue() {
+        return name();
     }
-
 }

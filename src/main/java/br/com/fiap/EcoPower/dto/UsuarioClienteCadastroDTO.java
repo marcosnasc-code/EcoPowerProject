@@ -1,6 +1,7 @@
 package br.com.fiap.EcoPower.dto;
 
 import br.com.fiap.EcoPower.model.PermissionRoles;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -25,9 +26,11 @@ public record UsuarioClienteCadastroDTO(
         String senha,
 
         @NotNull(message = "O endereço deve ser informado!")
+        @Valid
         EnderecoCadastroDTO endereco,
 
         @NotNull(message = "Os dados do cliente devem ser preenchidos!")
+        @Valid
         DadosClienteDTO dadosCliente
 ) {
 }

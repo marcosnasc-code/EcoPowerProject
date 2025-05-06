@@ -101,7 +101,9 @@ public class UsuarioService {
         return new UsuarioClienteExibicaoDTO(
                 usuario.getNome(),
                 usuario.getEmail(),
-                usuario.getDadosCliente().getCpf()
+                usuario.getDadosCliente().getCpf(),
+                usuario.getEndereco(),
+                usuario.getDadosCliente()
         );
     }
 
@@ -115,6 +117,7 @@ public class UsuarioService {
         return new UsuarioEmpresaExibicaoDTO(
                 usuario.getNome(),
                 usuario.getEmail(),
+                usuario.getEndereco(),
                 usuario.getDadosEmpresa().getCnpj()
         );
     }

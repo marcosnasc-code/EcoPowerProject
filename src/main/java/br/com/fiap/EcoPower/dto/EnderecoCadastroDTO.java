@@ -6,12 +6,10 @@ import jakarta.validation.constraints.NotNull;
 
 public record EnderecoCadastroDTO(
 
-        @NotNull
         @NotBlank(message = "O CEP precisa ser informado!")
         String cep,
 
-        @NotBlank(message = "A região precisa ser informada!")
-        @NotNull
+        @NotNull (message = "Região é obrigatória")
         BrazilRegions regiao
 
 ) {

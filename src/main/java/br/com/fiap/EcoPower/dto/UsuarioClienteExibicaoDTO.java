@@ -8,14 +8,18 @@ public record UsuarioClienteExibicaoDTO(
 
         String nome,
         String email,
-        String cpf
+        String cpf,
+        UsuarioModel.Endereco endereco,
+        UsuarioModel.DadosCliente dadosCliente
 
 ) {
         public UsuarioClienteExibicaoDTO(UsuarioModel usuarioModel){
             this(
                     usuarioModel.getNome(),
                     usuarioModel.getEmail(),
-                    usuarioModel.getDadosCliente().getCpf()
+                    usuarioModel.getDadosCliente().getCpf(),
+                    usuarioModel.getEndereco(),
+                    usuarioModel.getDadosCliente()
             );
         }
 }

@@ -117,6 +117,7 @@ public class UsuarioService {
         return new UsuarioEmpresaExibicaoDTO(
                 usuario.getNome(),
                 usuario.getEmail(),
+                usuario.getEndereco(),
                 usuario.getDadosEmpresa().getCnpj()
         );
     }

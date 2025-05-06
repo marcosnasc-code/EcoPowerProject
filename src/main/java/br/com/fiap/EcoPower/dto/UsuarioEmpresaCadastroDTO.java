@@ -1,5 +1,6 @@
 package br.com.fiap.EcoPower.dto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -23,8 +24,10 @@ public record UsuarioEmpresaCadastroDTO(
         @Size(min = 6, max = 12, message = "A senha deve conter entre 6 e 12 caracteres!")
         String senha,
 
+        @Valid
         EnderecoCadastroDTO endereco,
 
+        @Valid
         DadosEmpresaDTO dadosEmpresa
 
 ) {
